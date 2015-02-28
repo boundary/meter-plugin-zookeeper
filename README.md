@@ -20,6 +20,7 @@ Collects metrics from Zookeeper server.
 ### Plugin Configuration
 
 In order the plugin to collect statistics from Zookeeper server, it needs access to the service stats API endpoint.
+
 |Field Name     |Description                                         |
 |:--------------|:---------------------------------------------------|
 |service_port   |Zookeeper service port -          default: 2185     |
