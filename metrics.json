@@ -1,0 +1,74 @@
+[
+  {
+    "name": "ZK_WATCH_COUNT",
+    "displayName": "Zookeeper watch count",
+    "description": "Total amount of watches in zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Watch Count",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_NUM_ALIVE_CONNECTIONS",
+    "displayName": "Active connections",
+    "description": "Number of active connections in Zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Alive Conn",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
+    "displayName": "System open file descriptor",
+    "description": "Total amount of file descriptors open in the system reported by zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Sys Open FDesc",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_PACKETS_SENT",
+    "displayName": "Packages sent",
+    "description": "Total number of packages sent from Zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Packets Sent",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_PACKETS_RECEIVED",
+    "displayName": "Packages received",
+    "description": "Total number of packages received in Zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Packets Recv",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_MIN_LATENCY",
+    "displayName": "Minimum Latency",
+    "description": "The minimum latency measured by Zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Min Latency",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_EPHEMERALS_COUNT",
+    "displayName": "No of Ephemerals",
+    "description": "The total amount of ephemerals in Zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK EPHR Count",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_ZNODE_COUNT",
+    "displayName": "ZNode Count",
+    "description": "Total number of data registers in Zookeeper.",
+    "unit": "int",
+    "displayNameShort": "ZK Znode Count",
+    "defaultAggregate": "avg"
+  },
+  {
+    "name": "ZK_MAX_FILE_DESCRIPTOR_COUNT",
+    "displayName": "Maximum allowed file descriptors",
+    "description": "Total maximum number of filedescriptors allowed to open.",
+    "unit": "int",
+    "displayNameShort": "SR JVM in Use",
+    "defaultAggregate": "avg"
+  }
+]
