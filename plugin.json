@@ -1,19 +1,20 @@
 {
     "description": "Metric collector for Zookeeper",
-    "command": "python -u plugin.py",
     "icon" : "icon.png",
-    "core_name": "collection1",
+    "command": "python -u plugin.py",
+    "postInstall" : "",
+
     "metrics" : [
         "ZK_WATCH_COUNT",
-	"ZK_NUM_ALIVE_CONNECTIONS",
-	"ZK_OPEN_FILE_DESCRIPTOR_COUNT",
-	"ZK_SERVER_STATE",
-	"ZK_PACKETS_SENT",
-	"ZK_PACKETS_RECEIVED",
-	"ZK_MIN_LATENCY",
-	"ZK_EPHEMERALS_COUNT",
-	"ZK_ZNODE_COUNT",
-	"ZK_MAX_FILE_DESCRIPTOR_COUNT"
+        "ZK_NUM_ALIVE_CONNECTIONS",
+        "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
+        "ZK_SERVER_STATE",
+        "ZK_PACKETS_SENT",
+        "ZK_PACKETS_RECEIVED",
+        "ZK_MIN_LATENCY",
+        "ZK_EPHEMERALS_COUNT",
+        "ZK_ZNODE_COUNT",
+        "ZK_MAX_FILE_DESCRIPTOR_COUNT"
     ],
 
     "dashboards" : [
@@ -29,7 +30,7 @@
             "name": "pollInterval",
             "description": "The Poll Interval to call the command. Defaults 5 seconds",
             "type": "integer",
-            "default": 5000
+            "default": 5000,
             "required": true
         },
         {
