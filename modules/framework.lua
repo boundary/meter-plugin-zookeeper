@@ -109,7 +109,7 @@ function exportable(t)
 			for k,v in pairs(t) do 
 				if (warn) then
 					if _G[k] ~= nil then
-						print('Warning: Overriding function ' .. k ..' on global space.')
+						process.stderr:write('Warning: Overriding function ' .. k ..' on global space.')
 					end
 				end
 				_G[k] = v
@@ -287,7 +287,7 @@ end
 function Plugin:error(err)
 	local msg = tostring(err)
 
-	print(msg)
+	process.stderr:write(msg)
 end
 
 function HttpPlugin:makeRequest(reqOptions, successCallback)
