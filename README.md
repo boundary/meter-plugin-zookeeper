@@ -2,19 +2,32 @@ Boundary Zookeeper Plugin
 -----------------------------
 Collects metrics from Zookeeper server.
 
-### Platforms
+## Prerequisites
+
+### Supported OS Platforms
 
 |     OS    | Linux | Windows | SmartOS | OS X |
 |:----------|:-----:|:-------:|:-------:|:----:|
 | Supported |   v   |         |         |      |
 
-### Prerequisites
+#### Boundary Meter Versions V4.0 Or Greater
+
+To get the new meter:
+
+    curl -fsS \
+        -d "{\"token\":\"<your API token here>\"}" \
+        -H "Content-Type: application/json" \
+        "https://meter.boundary.com/setup_meter" > setup_meter.sh
+    chmod +x setup_meter.sh
+    ./setup_meter.sh
+
+#### For Boundary Meter less than V4.0
 
 |  Runtime | node.js | Python | Java |
 |:---------|:-------:|:------:|:----:|
 | Required |         |    v   |      |
 
-- Python 2.6 or later
+- [How to install Python?](https://help.boundary.com/hc/articles/202270132)
 - Zookeeper 3.4+
 
 ### Plugin Configuration
@@ -41,3 +54,6 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 |ZK_EPHEMERALS_COUNT          |The total amount of ephemerals in Zookeeper                              |
 |ZK_ZNODE_COUNT               |Total number of data registers in Zookeeper                              |
 |ZK_MAX_FILE_DESCRIPTOR_COUNT |Total maximum number of filedescriptors allowed to open                  |
+
+### References
+Collects metrics from Zookeeper server using the mntr command. Take a look at Zookeeper Administrator's Guide for details (http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html)

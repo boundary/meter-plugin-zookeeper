@@ -3,6 +3,8 @@
     "icon" : "icon.png",
     "command": "python -u plugin.py",
     "postInstall" : "",
+    "command_lua": "boundary-meter init.lua",
+    "postInstall_lua" : "",
 
     "metrics" : [
         "ZK_WATCH_COUNT",
