@@ -10,6 +10,8 @@ Collects metrics from Zookeeper server.
 |:----------|:-----:|:-------:|:-------:|:----:|
 | Supported |   v   |         |         |      |
 
+#### Zookeeper 3.4+
+
 #### Boundary Meter Versions V4.0 Or Greater
 
 To get the new meter:
@@ -28,11 +30,14 @@ To get the new meter:
 | Required |         |    v   |      |
 
 - [How to install Python?](https://help.boundary.com/hc/articles/202270132)
-- Zookeeper 3.4+
+
+### Plugin Setup
+
+In order the plugin to collect statistics from Zookeeper server, it needs access to the service stats API endpoint.
 
 ### Plugin Configuration
 
-In order the plugin to collect statistics from Zookeeper server, it needs access to the service stats API endpoint.
+#### For All Versions
 
 |Field Name     |Description                                         |
 |:--------------|:---------------------------------------------------|
@@ -42,6 +47,8 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 |pollInterval   |How often to query the Zookeeper service for metrics|
 
 ### Metrics Collected
+
+#### For All Versions
 
 |Metric Name                  |Description                                                              |
 |:----------------------------|:------------------------------------------------------------------------|
