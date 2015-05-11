@@ -53,20 +53,30 @@ function zookeeperPlugin:onParseValues(data)
   metrics['ZK_WATCH_COUNT'] = false
   metrics['ZK_NUM_ALIVE_CONNECTIONS'] = false
   metrics['ZK_OPEN_FILE_DESCRIPTOR_COUNT'] = false
+  metrics['ZK_OUTSTANDING_REQUESTS'] = false
   metrics['ZK_PACKETS_SENT'] =  true
   metrics['ZK_PACKETS_RECEIVED'] = true
+  metrics['ZK_APPROXIMATE_DATA_SIZE'] = true
   metrics['ZK_MIN_LATENCY'] = false
+  metrics['ZK_MAX_LATENCY'] = false
+  metrics['ZK_AVG_LATENCY'] = false
   metrics['ZK_EPHEMERALS_COUNT'] = false
   metrics['ZK_ZNODE_COUNT'] = false
   metrics['ZK_MAX_FILE_DESCRIPTOR_COUNT'] = false
+  metrics['ZK_SERVER_STATE'] = false
+  metrics['ZK_FOLLOWERS'] = false
+  metrics['ZK_SYNCED_FOLLOWERS'] = false
+  metrics['ZK_PENDING_SYNCS'] = false
 
   local result = {}
   each(
     function (boundaryName, acc) 
       local metricName = string.lower(boundaryName) 
-      local value = tonumber(parsed[metricName])
+      if parsed[metricName] then
+        local value = (metricName == "zk_server_state" and (parsed[metricName] == "leader" and 1 or 0)) or tonumber(parsed[metricName])
 
-      table.insert(result, framework.util.pack(boundaryName, acc and accumulated:accumulate(boundaryName, value) or value, nil, zookeeperPlugin.source))
+        table.insert(result, framework.util.pack(boundaryName, acc and accumulated:accumulate(boundaryName, value) or value, nil, zookeeperPlugin.source))
+      end
     end, metrics)
 
   return result

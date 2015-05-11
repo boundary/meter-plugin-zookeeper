@@ -1,18 +1,58 @@
 {
     "result" : [
         {
-            "name": "ZK_WATCH_COUNT",
-            "displayName": "Zookeeper watch count",
-            "description": "Total amount of watches in zookeeper.",
+            "name": "ZK_AVG_LATENCY",
+            "displayName": "Zookeeper Average Latency",
+            "description": "The average latency measured by Zookeeper.",
             "unit": "int",
-            "displayNameShort": "ZK Watch Count",
+            "displayNameShort": "ZK Avg Lat",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_MAX_LATENCY",
+            "displayName": "Zookeeper Maximum Latency",
+            "description": "The maximum latency measured by Zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK Max Lat",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_MIN_LATENCY",
+            "displayName": "Zookeeper Minimum Latency",
+            "description": "The minimum latency measured by Zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK Min Lat",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_PACKETS_RECEIVED",
+            "displayName": "Zookeeper Packages Received",
+            "description": "Total number of packets received in Zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK Recv",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_PACKETS_SENT",
+            "displayName": "Zookeeper Packages Sent",
+            "description": "Total number of packets sent from Zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK Sent",
             "defaultResolutionMS": 0,
             "isDisabled": 0,
             "defaultAggregate": "avg"
         },
         {
             "name": "ZK_NUM_ALIVE_CONNECTIONS",
-            "displayName": "Active connections",
+            "displayName": "Zookeeper Active Connections",
             "description": "Number of active connections in Zookeeper.",
             "unit": "int",
             "displayNameShort": "ZK Alive Conn",
@@ -21,71 +61,111 @@
             "defaultAggregate": "avg"
         },
         {
-            "name": "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
-            "displayName": "System open file descriptor",
-            "description": "Total amount of file descriptors open in the system reported by zookeeper.",
+            "name": "ZK_OUTSTANDING_REQUESTS",
+            "displayName": "Zookeeper Outstanding Requests",
+            "description": "Total number of requests waiting to be processed by Zookeeper",
             "unit": "int",
-            "displayNameShort": "ZK Sys Open FDesc",
+            "displayNameShort": "ZK Requests",
             "defaultResolutionMS": 0,
             "isDisabled": 0,
             "defaultAggregate": "avg"
         },
         {
-            "name": "ZK_PACKETS_SENT",
-            "displayName": "Packages sent",
-            "description": "Total number of packages sent from Zookeeper.",
+            "name": "ZK_SERVER_STATE",
+            "displayName": "Zookeeper Server State",
+            "description": "Whether the server is currently a leader or a follower in the cluster.",
             "unit": "int",
-            "displayNameShort": "ZK Packets Sent",
-            "defaultResolutionMS": 0,
-            "isDisabled": 0,
-            "defaultAggregate": "avg"
-        },
-        {
-            "name": "ZK_PACKETS_RECEIVED",
-            "displayName": "Packages received",
-            "description": "Total number of packages received in Zookeeper.",
-            "unit": "int",
-            "displayNameShort": "ZK Packets Recv",
-            "defaultResolutionMS": 0,
-            "isDisabled": 0,
-            "defaultAggregate": "avg"
-        },
-        {
-            "name": "ZK_MIN_LATENCY",
-            "displayName": "Minimum Latency",
-            "description": "The minimum latency measured by Zookeeper.",
-            "unit": "int",
-            "displayNameShort": "ZK Min Latency",
-            "defaultResolutionMS": 0,
-            "isDisabled": 0,
-            "defaultAggregate": "avg"
-        },
-        {
-            "name": "ZK_EPHEMERALS_COUNT",
-            "displayName": "No of Ephemerals",
-            "description": "The total amount of ephemerals in Zookeeper.",
-            "unit": "int",
-            "displayNameShort": "ZK EPHR Count",
+            "displayNameShort": "ZK State",
             "defaultResolutionMS": 0,
             "isDisabled": 0,
             "defaultAggregate": "avg"
         },
         {
             "name": "ZK_ZNODE_COUNT",
-            "displayName": "ZNode Count",
+            "displayName": "Zookeeper ZNode Count",
             "description": "Total number of data registers in Zookeeper.",
             "unit": "int",
-            "displayNameShort": "ZK Znode Count",
+            "displayNameShort": "ZK ZNode Count",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_WATCH_COUNT",
+            "displayName": "Zookeeper Watch Count",
+            "description": "Total amount of watches in zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK Watch Count",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_EPHEMERALS_COUNT",
+            "displayName": "Zookeeper Count of Ephemerals",
+            "description": "The total amount of ephemerals in Zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK Ephemerals Cnt",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_APPROXIMATE_DATA_SIZE",
+            "displayName": "Zookeeper Aprroximate Data Size",
+            "description": "The approximate size of the data being handled by Zookeeper."
+            "unit": "int",
+            "displayNameShort": "ZK App Size",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
+            "displayName": "Zookeeper Open File Descriptors",
+            "description": "Total amount of file descriptors open in the system reported by zookeeper.",
+            "unit": "int",
+            "displayNameShort": "ZK OpenFDs",
             "defaultResolutionMS": 0,
             "isDisabled": 0,
             "defaultAggregate": "avg"
         },
         {
             "name": "ZK_MAX_FILE_DESCRIPTOR_COUNT",
-            "displayName": "Maximum allowed file descriptors",
-            "description": "Total maximum number of filedescriptors allowed to open.",
+            "displayName": "Zookeeper Maximum Allowed File Descriptors",
+            "description": "Total maximum number of filedescriptors allowed to be open in Zookeeper.",
             "unit": "int",
-            "displayNameShort": "SR JVM in Use",
+            "displayNameShort": "ZK MaxFDs",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_FOLLOWERS",
+            "displayName": "Zookeeper Followers",
+            "description": "The number of servers using this Zookeeper node as a leader.",
+            "unit": "int",
+            "displayNameShort": "ZK Followers",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_SYNCED_FOLLOWERS",
+            "displayName": "Zookeeper Synced Followers",
+            "description": "The number of servers using this Zookeeper node as a leader that are synchronized with this node.",
+            "unit": "int",
+            "displayNameShort": "ZK Sync Flwrs",
+            "defaultResolutionMS": 0,
+            "isDisabled": 0,
+            "defaultAggregate": "avg"
+        },
+        {
+            "name": "ZK_PENDING_SYNCS",
+            "displayName": "Zookeeper Pending Syncs",
+            "description": "The total number of outstanding synchroinization requests to this server which have not been processed.",
+            "unit": "int",
+            "displayNameShort": "ZK Pend Syncs",
             "defaultResolutionMS": 0,
             "isDisabled": 0,
             "defaultAggregate": "avg"

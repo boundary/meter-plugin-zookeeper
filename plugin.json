@@ -7,15 +7,23 @@
     "postInstall_lua" : "",
 
     "metrics" : [
-        "ZK_WATCH_COUNT",
-        "ZK_NUM_ALIVE_CONNECTIONS",
-        "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
-        "ZK_PACKETS_SENT",
-        "ZK_PACKETS_RECEIVED",
+        "ZK_AVG_LATENCY",
+        "ZK_MAX_LATENCY",
         "ZK_MIN_LATENCY",
-        "ZK_EPHEMERALS_COUNT",
+        "ZK_PACKETS_RECEIVED",
+        "ZK_PACKETS_SENT",
+        "ZK_NUM_ALIVE_CONNECTIONS",
+        "ZK_OUTSTANDING_REQUESTS",
+        "ZK_SERVER_STATE",
         "ZK_ZNODE_COUNT",
-        "ZK_MAX_FILE_DESCRIPTOR_COUNT"
+        "ZK_WATCH_COUNT",
+        "ZK_EPHEMERALS_COUNT",
+        "ZK_APPROXIMATE_DATA_SIZE",
+        "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
+        "ZK_MAX_FILE_DESCRIPTOR_COUNT",
+        "ZK_FOLLOWERS",
+        "ZK_SYNCED_FOLLOWERS",
+        "ZK_PENDING_SYNCS"
     ],
 
     "dashboards" : [
