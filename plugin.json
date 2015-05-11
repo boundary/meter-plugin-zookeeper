@@ -10,7 +10,6 @@
         "ZK_WATCH_COUNT",
         "ZK_NUM_ALIVE_CONNECTIONS",
         "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
-        "ZK_SERVER_STATE",
         "ZK_PACKETS_SENT",
         "ZK_PACKETS_RECEIVED",
         "ZK_MIN_LATENCY",
