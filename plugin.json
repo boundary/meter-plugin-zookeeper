@@ -29,7 +29,7 @@
     "dashboards" : [
         {
             "name" : "Zookeeper",
-            "layout" : "d-w=4&d-h=4&d-pad=5&d-bg=none&d-g-ZK_WATCH_COUNT=0-0-1-1&d-g-ZK_NUM_ALIVE_CONNECTIONS=1-0-1-1&d-g-ZK_OPEN_FILE_DESCRIPTOR_COUNT=0-1-1-1&d-g-ZK_SERVER_STATE=0-2-1-1&d-g-ZK_PACKETS_SENT=1-1-1-1&d-g-ZK_PACKETS_RECEIVED=1-2-1-1&d-g-ZK_MIN_LATENCY=2-2-1-1&d-g-ZK_EPHEMERALS_COUNT=0-3-1-1&d-g-ZK_ZNODE_COUNT=1-3-1-1&d-g-ZK_MAX_FILE_DESCRIPTOR_COUNT=2-3-1-1"
+            "layout" : "d-w=4&d-h=4&d-pad=5&d-rrange=120&d-bg=none&d-g-ZK_PACKETS_SENT=1-1-1-1&d-g-ZK_PACKETS_RECEIVED=1-2-1-1&d-g-ZK_MIN_LATENCY=2-2-1-1&d-g-ZK_SYNCED_FOLLOWERS=3-2-1-1&d-g-ZK_PENDING_SYNCS=3-3-1-1&d-g-ZK_FOLLOWERS=3-1-1-1&d-g-ZK_SERVER_STATE=3-0-1-1&d-g-ZK_AVG_LATENCY=2-0-1-1&d-g-ZK_MAX_LATENCY=2-1-1-1&d-g-ZK_APPROXIMATE_DATA_SIZE=1-3-1-1&d-g-ZK_NUM_ALIVE_CONNECTIONS=0-0-1-1&d-g-ZK_OUTSTANDING_REQUESTS=1-0-1-1&d-g-ZK_ZNODE_COUNT=0-1-1-1&d-g-ZK_OPEN_FILE_DESCRIPTOR_COUNT=2-3-1-1-t&d-g-ZK_MAX_FILE_DESCRIPTOR_COUNT=2-3-1-1-b&d-g-ZK_WATCH_COUNT=0-3-1-1&d-g-ZK_EPHEMERALS_COUNT=0-2-1-1"
         }
     ],
 
@@ -41,20 +41,6 @@
             "type": "integer",
             "default": 5000,
             "required": true
-        },
-        {
-            "title": "Zookeeper Plugin Log File",
-            "name": "log_file",
-            "description": "The log file to capture logging information from the plugin",
-            "type": "string",
-            "required": false
-        },
-        {
-            "title": "Zookeeper Plugin Report Log File",
-            "name": "report_log_file",
-            "description": "The log file to capture reporting information from the plugin",
-            "type": "string",
-            "required": false
         },
         {
             "title": "Zookeeper Service Host",
