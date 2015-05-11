@@ -1,18 +1,15 @@
-local framework = require('framework.lua')
-framework.table()
-framework.util()
-framework.functional()
-local stringutil = framework.string
+local framework = require('framework')
+local split = framework.string.split
+local notEmpty = framework.string.notEmpty
 
 local Plugin = framework.Plugin
 local NetDataSource = framework.NetDataSource
 local Accumulator = framework.Accumulator
-local net = require('net')
 require('fun')(true) -- Shows a warn when overriding an existing function.
 
 local params = framework.params
 params.name = 'Boundary Zookeeper plugin'
-params.version = '1.0'
+params.version = '1.2'
 params.tags = 'plugin,lua,zookeeper'
 
 local zookeeperDataSource = NetDataSource:new(params.service_host, params.service_port)
@@ -23,7 +20,7 @@ end
 local zookeeperPlugin = Plugin:new(params, zookeeperDataSource)
 
 function parseLine(line)
-  local parts = stringutil.split(line, '\t')
+  local parts = split(line, '\t')
 
   return parts
 end
@@ -38,7 +35,8 @@ function toMapReducer (acc, x)
 end
 
 function parse(data)
-  local lines = filter(stringutil.notEmpty, stringutil.split(data, '\n'))
+  local lines = {}
+  table.foreach(split(data, '\n'), function(i, v) if notEmpty(v) then table.insert(lines, v) end end)
   local parsedLines = map(parseLine, lines)
   local m = reduce(toMapReducer, {}, parsedLines)
 
@@ -65,15 +63,10 @@ function zookeeperPlugin:onParseValues(data)
   local result = {}
   each(
     function (boundaryName, acc) 
-      local metric = {}
-      metric.metric = string.lower(boundaryName) 
+      local metricName = string.lower(boundaryName) 
       local value = tonumber(parsed[metricName])
-      if acc then
-        value = accumulated:accumulate(boundaryName, value)
-      end
 
-      metric.value = value
-      table.insert(result, metric)
+      table.insert(result, framework.util.pack(boundaryName, acc and accumulated:accumulate(boundaryName, value) or value, nil, zookeeperPlugin.source))
     end, metrics)
 
   return result
