@@ -733,10 +733,10 @@ function NetDataSource:fetch(context, callback)
     if callback then
       socket:once('data', function (data)
         callback(data)
-        socket:done()
+        socket:destroy()
       end)
     else
-      socket:done()
+      socket:destroy()
     end
   end)
   socket:on('error', function (err) self:emit('error', 'Socket error: ' .. err.message) end)
