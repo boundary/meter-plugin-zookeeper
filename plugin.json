@@ -43,6 +43,12 @@
             "required": true
         },
         {
+            "title" : "Source",
+            "name" : "source",
+            "description" : "The Source to display in the legend for the zookeeper data.  It will default to the hostname of the server",
+            "type" : "string"
+        },
+        {
             "title": "Zookeeper Service Host",
             "name": "service_host",
             "description": "The host used to make TCP connection to the Zookeeper stats API endpoint",
@@ -65,6 +71,6 @@
             "type": "integer",
             "default": 1,
             "required": true
-        }
+        },
     ]
 }
