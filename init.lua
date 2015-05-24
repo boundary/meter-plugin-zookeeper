@@ -34,12 +34,11 @@ end
 
 local zookeeperPlugin = Plugin:new(params, zookeeperDataSource)
 
-function parseLine(line)
-  local parts = split(line, '\t')
-  return parts
+local function parseLine(line)
+  return split(line, '\t')
 end
 
-function toMapReducer (acc, x)
+local function toMapReducer (acc, x)
   local k = x[1]
   local v = x[2]
   acc[k] = v
@@ -47,7 +46,7 @@ function toMapReducer (acc, x)
   return acc
 end
 
-function parse(data)
+local function parse(data)
   local lines = {}
   table.foreach(split(data, '\n'), function(i, v) if notEmpty(v) then table.insert(lines, v) end end)
   local parsedLines = map(parseLine, lines)
