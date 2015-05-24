@@ -20,19 +20,21 @@ local NetDataSource = framework.NetDataSource
 local Accumulator = framework.Accumulator
 local map = framework.functional.map
 local reduce = framework.functional.reduce
+local filter = framework.functional.filter
 local each = framework.functional.each
+local pack = framework.util.pack
 
 local params = framework.params
 params.name = 'Boundary Zookeeper plugin'
 params.version = '2.0'
 params.tags = 'zookeeper'
 
-local zookeeperDataSource = NetDataSource:new(params.service_host, params.service_port)
-function zookeeperDataSource:onFetch(socket)
+local ds = NetDataSource:new(params.service_host, params.service_port, true)
+function ds:onFetch(socket)
   socket:write('mntr\n')
 end
 
-local zookeeperPlugin = Plugin:new(params, zookeeperDataSource)
+local plugin = Plugin:new(params, ds)
 
 local function parseLine(line)
   return split(line, '\t')
@@ -47,8 +49,7 @@ local function toMapReducer (acc, x)
 end
 
 local function parse(data)
-  local lines = {}
-  table.foreach(split(data, '\n'), function(i, v) if notEmpty(v) then table.insert(lines, v) end end)
+  local lines = filter(notEmpty, split(data, '\n'))
   local parsedLines = map(parseLine, lines)
   local m = reduce(toMapReducer, {}, parsedLines)
 
@@ -57,7 +58,7 @@ end
 
 local accumulated = Accumulator:new() 
 
-function zookeeperPlugin:onParseValues(data)
+function plugin:onParseValues(data)
   local parsed = parse(data)
 
   local metrics = {}
@@ -82,17 +83,17 @@ function zookeeperPlugin:onParseValues(data)
 
   local result = {}
   each(
-    function (boundaryName, acc) 
-      local metricName = boundaryName:lower()
-      if parsed[metricName] then
-        local value = (metricName == "zk_server_state" and (parsed[metricName] == "leader" and 1 or 0)) or tonumber(parsed[metricName])
+    function (boundary_name, acc) 
+      local metric_name = boundary_name:lower()
+      if parsed[metric_name] then
+        local value = (metric_name == "zk_server_state" and (parsed[metric_name] == "leader" and 1 or 0)) or tonumber(parsed[metric_name])
 
-        table.insert(result, framework.util.pack(boundaryName, acc and accumulated:accumulate(boundaryName, value) or value, nil, zookeeperPlugin.source))
+        table.insert(result, pack(boundary_name, acc and accumulated:accumulate(boundary_name, value) or value))
       end
     end, metrics)
 
   return result
 end
 
-zookeeperPlugin:run()
+plugin:run()
 
