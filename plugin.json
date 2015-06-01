@@ -1,7 +1,4 @@
 {
-  "name"            : "Boundary Zookeeper plugin"
-  "version"         : "2.0"
-  "tags"            : "plugin,lua,zookeeper"
   "description"     : "Metric collector for Zookeeper",
   "icon"            : "icon.png",
   "command"         : "python -u plugin.py",
