@@ -1,76 +1,73 @@
 {
-    "description": "Metric collector for Zookeeper",
-    "icon" : "icon.png",
-    "command": "python -u plugin.py",
-    "postInstall" : "",
-    "command_lua": "boundary-meter init.lua",
-    "postInstall_lua" : "",
+  "name"            : "Boundary Zookeeper plugin"
+  "version"         : "2.0"
+  "tags"            : "plugin,lua,zookeeper"
+  "description"     : "Metric collector for Zookeeper",
+  "icon"            : "icon.png",
+  "command"         : "python -u plugin.py",
+  "postInstall"     : "",
+  "command_lua"     : "boundary-meter init.lua",
+  "postInstall_lua" : "",
 
-    "metrics" : [
-        "ZK_AVG_LATENCY",
-        "ZK_MAX_LATENCY",
-        "ZK_MIN_LATENCY",
-        "ZK_PACKETS_RECEIVED",
-        "ZK_PACKETS_SENT",
-        "ZK_NUM_ALIVE_CONNECTIONS",
-        "ZK_OUTSTANDING_REQUESTS",
-        "ZK_SERVER_STATE",
-        "ZK_ZNODE_COUNT",
-        "ZK_WATCH_COUNT",
-        "ZK_EPHEMERALS_COUNT",
-        "ZK_APPROXIMATE_DATA_SIZE",
-        "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
-        "ZK_MAX_FILE_DESCRIPTOR_COUNT",
-        "ZK_FOLLOWERS",
-        "ZK_SYNCED_FOLLOWERS",
-        "ZK_PENDING_SYNCS"
-    ],
+  "metrics" : [
+    "ZK_AVG_LATENCY",
+    "ZK_MAX_LATENCY",
+    "ZK_MIN_LATENCY",
+    "ZK_PACKETS_RECEIVED",
+    "ZK_PACKETS_SENT",
+    "ZK_NUM_ALIVE_CONNECTIONS",
+    "ZK_OUTSTANDING_REQUESTS",
+    "ZK_SERVER_STATE",
+    "ZK_ZNODE_COUNT",
+    "ZK_WATCH_COUNT",
+    "ZK_EPHEMERALS_COUNT",
+    "ZK_APPROXIMATE_DATA_SIZE",
+    "ZK_OPEN_FILE_DESCRIPTOR_COUNT",
+    "ZK_MAX_FILE_DESCRIPTOR_COUNT",
+    "ZK_FOLLOWERS",
+    "ZK_SYNCED_FOLLOWERS",
+    "ZK_PENDING_SYNCS"
+  ],
 
-    "dashboards" : [
-        {
-            "name" : "Zookeeper",
-            "layout" : "d-w=4&d-h=4&d-pad=5&d-rrange=120&d-bg=none&d-g-ZK_PACKETS_SENT=1-1-1-1&d-g-ZK_PACKETS_RECEIVED=1-2-1-1&d-g-ZK_MIN_LATENCY=2-2-1-1&d-g-ZK_SYNCED_FOLLOWERS=3-2-1-1&d-g-ZK_PENDING_SYNCS=3-3-1-1&d-g-ZK_FOLLOWERS=3-1-1-1&d-g-ZK_SERVER_STATE=3-0-1-1&d-g-ZK_AVG_LATENCY=2-0-1-1&d-g-ZK_MAX_LATENCY=2-1-1-1&d-g-ZK_APPROXIMATE_DATA_SIZE=1-3-1-1&d-g-ZK_NUM_ALIVE_CONNECTIONS=0-0-1-1&d-g-ZK_OUTSTANDING_REQUESTS=1-0-1-1&d-g-ZK_ZNODE_COUNT=0-1-1-1&d-g-ZK_OPEN_FILE_DESCRIPTOR_COUNT=2-3-1-1-t&d-g-ZK_MAX_FILE_DESCRIPTOR_COUNT=2-3-1-1-b&d-g-ZK_WATCH_COUNT=0-3-1-1&d-g-ZK_EPHEMERALS_COUNT=0-2-1-1"
-        }
-    ],
+  "dashboards" : [
+    {
+        "name" : "Zookeeper",
+        "layout" : "d-w=4&d-h=4&d-pad=5&d-rrange=120&d-bg=none&d-g-ZK_PACKETS_SENT=1-1-1-1&d-g-ZK_PACKETS_RECEIVED=1-2-1-1&d-g-ZK_MIN_LATENCY=2-2-1-1&d-g-ZK_SYNCED_FOLLOWERS=3-2-1-1&d-g-ZK_PENDING_SYNCS=3-3-1-1&d-g-ZK_FOLLOWERS=3-1-1-1&d-g-ZK_SERVER_STATE=3-0-1-1&d-g-ZK_AVG_LATENCY=2-0-1-1&d-g-ZK_MAX_LATENCY=2-1-1-1&d-g-ZK_APPROXIMATE_DATA_SIZE=1-3-1-1&d-g-ZK_NUM_ALIVE_CONNECTIONS=0-0-1-1&d-g-ZK_OUTSTANDING_REQUESTS=1-0-1-1&d-g-ZK_ZNODE_COUNT=0-1-1-1&d-g-ZK_OPEN_FILE_DESCRIPTOR_COUNT=2-3-1-1-t&d-g-ZK_MAX_FILE_DESCRIPTOR_COUNT=2-3-1-1-b&d-g-ZK_WATCH_COUNT=0-3-1-1&d-g-ZK_EPHEMERALS_COUNT=0-2-1-1"
+    }
+  ],
 
-    "paramSchema": [
-        {
-            "title": "Poll Time (ms)",
-            "name": "pollInterval",
-            "description": "The Poll Interval to call the command. Defaults 5 seconds",
-            "type": "integer",
-            "default": 5000,
-            "required": true
-        },
-        {
-            "title" : "Source",
-            "name" : "source",
-            "description" : "The Source to display in the legend for the zookeeper data.  It will default to the hostname of the server",
-            "type" : "string"
-        },
-        {
-            "title": "Zookeeper Service Host",
-            "name": "service_host",
-            "description": "The host used to make TCP connection to the Zookeeper stats API endpoint",
-            "type": "string",
-            "default": "localhost",
-            "required": true
-        },
-        {
-            "title": "Zookeeper Service Port",
-            "name": "service_port",
-            "description": "The port used to make TCP connection to the Zookeeper stats API endpoint",
-            "type": "string",
-            "default": "2185",
-            "required": true
-        },
-        {
-            "title": "Zookeeper Service Timeout",
-            "name": "service_timeout",
-            "description": "The timeout value for connecting to the zookeper service",
-            "type": "integer",
-            "default": 1,
-            "required": true
-        },
-    ]
+  "paramSchema": [
+    {
+        "title": "Poll Time (ms)",
+        "name": "pollInterval",
+        "description": "The Poll Interval to call the command. Defaults 5 seconds",
+        "type": "integer",
+        "default": 5000,
+        "required": true
+    },
+    {
+        "title": "Zookeeper Service Host",
+        "name": "service_host",
+        "description": "The host used to make TCP connection to the Zookeeper stats API endpoint",
+        "type": "string",
+        "default": "localhost",
+        "required": true
+    },
+    {
+        "title": "Zookeeper Service Port",
+        "name": "service_port",
+        "description": "The port used to make TCP connection to the Zookeeper stats API endpoint",
+        "type": "string",
+        "default": "2185",
+        "required": true
+    },
+    {
+        "title": "Zookeeper Service Timeout",
+        "name": "service_timeout",
+        "description": "The timeout value for connecting to the zookeper service",
+        "type": "integer",
+        "default": 1,
+        "required": true
+    }
+  ]
 }
