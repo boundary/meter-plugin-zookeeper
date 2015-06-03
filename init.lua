@@ -25,11 +25,6 @@ local each = framework.functional.each
 local pack = framework.util.pack
 
 local params = framework.params
-if framework.plugin_params.name == nil then
-  params.name = 'Boundary Zookeeper plugin'
-  params.version = '2.0'
-  params.tags = 'plugin,lua,zookeeper'
-end
 
 local ds = NetDataSource:new(params.service_host, params.service_port, true)
 function ds:onFetch(socket)
