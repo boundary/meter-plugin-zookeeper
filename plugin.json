@@ -1,6 +1,8 @@
 {
   "name"            : "Boundary Zookeeper Plugin",
-  "version"         : "2.0",
+  "version" : "0.9.0",
+  "meterVersionRequired" : "4.2.0-611",
+  "os" : [ "Linux", "Windows", "SmartOS", "OS X" ], 
   "tags"            : "zookeeper",
   "description"     : "Metric collector for Zookeeper",
   "icon"            : "icon.png",
