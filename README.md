@@ -12,12 +12,12 @@ Collects metrics from Zookeeper server.
 
 #### Zookeeper 3.4+
 
-#### Boundary Meter Versions V4.0 Or Later
+#### Boundary Meter versions v4.2 or later
 
 - To install new meter go to Settings->Installation or [see instructons](https://help.boundary.com/hc/en-us/sections/200634331-Installation).
 - To upgrade the meter to the latest version - [see instructons](https://help.boundary.com/hc/en-us/articles/201573102-Upgrading-the-Boundary-Meter).
 
-#### For Boundary Meter less than V4.0
+#### For Boundary Meter earlier than v4.2
 
 |  Runtime | node.js | Python | Java |
 |:---------|:-------:|:------:|:----:|
@@ -31,8 +31,6 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 
 ### Plugin Configuration
 
-#### For All Versions
-
 |Field Name     |Description                                         |
 |:--------------|:---------------------------------------------------|
 |service_port   |Zookeeper service port -          default: 2185     |
@@ -42,8 +40,6 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 |Source        |The Source to display in the legend for the zookeeper data.  It will default to the hostname of the server|
 
 ### Metrics Collected
-
-#### For All Versions
 
 |Metric Name                  |Description                                                              |
 |:----------------------------|:------------------------------------------------------------------------|
@@ -56,6 +52,10 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 |ZK_EPHEMERALS_COUNT          |The total amount of ephemerals in Zookeeper                              |
 |ZK_ZNODE_COUNT               |Total number of data registers in Zookeeper                              |
 |ZK_MAX_FILE_DESCRIPTOR_COUNT |Total maximum number of filedescriptors allowed to open                  |
+
+### Dashboards
+
+- Zookeeper
 
 ### References
 Collects metrics from Zookeeper server using the mntr command. Take a look at Zookeeper Administrator's Guide for details (http://zookeeper.apache.org/doc/trunk/zookeeperAdmin.html)
