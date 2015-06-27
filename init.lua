@@ -56,7 +56,6 @@ end
 local accumulated = Accumulator:new() 
 
 function plugin:onParseValues(data)
-  p(data)
   local parsed = parse(data)
 
   local metrics = {}
