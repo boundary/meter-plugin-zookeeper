@@ -7,9 +7,9 @@
   "description"     : "Metric collector for Zookeeper",
   "icon"            : "icon.png",
   "command"         : "python -u plugin.py",
-  "postInstall"     : "",
+  "postExtract"     : "",
   "command_lua"     : "boundary-meter init.lua",
-  "postInstall_lua" : "",
+  "postExtract_lua" : "",
 
   "metrics" : [
     "ZK_AVG_LATENCY",
@@ -40,11 +40,11 @@
 
   "paramSchema": [
     {
-      "title": "Poll Time (ms)",
+      "title": "Poll Interval (ms)",
       "name": "pollInterval",
-      "description": "The Poll Interval to call the command. Defaults 5 seconds",
+      "description": "The Poll Interval (in milliseconds) to call the command.",
       "type": "integer",
-      "default": 5000,
+      "default": 2000,
       "required": true
     },
     {
@@ -59,8 +59,8 @@
       "title": "Zookeeper Service Port",
       "name": "service_port",
       "description": "The port used to make TCP connection to the Zookeeper stats API endpoint",
-      "type": "string",
-      "default": "2185",
+      "type": "integer",
+      "default": 2185,
       "required": true
     },
     {
