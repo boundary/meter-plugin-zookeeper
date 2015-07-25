@@ -26,7 +26,7 @@ local ipack = framework.util.ipack
 
 local params = framework.params
 
-local ds = NetDataSource:new(params.service_host, params.service_port, true)
+local ds = NetDataSource:new(params.host, params.port, true)
 function ds:onFetch(socket)
   socket:write('mntr\n')
 end

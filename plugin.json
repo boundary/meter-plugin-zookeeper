@@ -40,16 +40,16 @@
 
   "paramSchema": [
     {
-      "title": "Service Host",
-      "name": "service_host",
+      "title": "Host",
+      "name": "host",
       "description": "The host used to make TCP connection to the Zookeeper stats API endpoint",
       "type": "string",
       "default": "127.0.0.1",
       "required": true
     },
     {
-      "title": "Service Port",
-      "name": "service_port",
+      "title": "Port",
+      "name": "port",
       "description": "The port used to make TCP connection to the Zookeeper stats API endpoint",
       "type": "integer",
       "default": 2185,
