@@ -22,7 +22,7 @@ local map = framework.functional.map
 local reduce = framework.functional.reduce
 local filter = framework.functional.filter
 local each = framework.functional.each
-local pack = framework.util.pack
+local ipack = framework.util.ipack
 
 local params = framework.params
 
@@ -84,8 +84,7 @@ function plugin:onParseValues(data)
       local metric_name = boundary_name:lower()
       if parsed[metric_name] then
         local value = (metric_name == "zk_server_state" and (parsed[metric_name] == "leader" and 1 or 0)) or tonumber(parsed[metric_name])
-
-        table.insert(result, pack(boundary_name, acc and accumulated:accumulate(boundary_name, value) or value))
+        ipack(result, boundary_name, acc and accumulated:accumulate(boundary_name, value) or value)
       end
     end, metrics)
 
