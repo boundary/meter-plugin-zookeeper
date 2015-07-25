@@ -56,7 +56,7 @@
       "required": true
     },
     {
-      "title": "Zookeeper Service Timeout",
+      "title": "Service Timeout",
       "name": "service_timeout",
       "description": "The timeout value for connecting to the zookeper service",
       "type": "integer",
@@ -71,5 +71,12 @@
       "default": 2000,
       "required": false
     },
+    {
+      "title" : "Source",
+      "name" : "source",
+      "description" : "The Source to display in the legend for the data. It will default to the hostname of the server",
+      "type" : "string",
+      "required" : false
+    }
   ]
 }
