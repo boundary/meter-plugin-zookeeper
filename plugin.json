@@ -40,15 +40,7 @@
 
   "paramSchema": [
     {
-      "title": "Poll Interval (ms)",
-      "name": "pollInterval",
-      "description": "The Poll Interval (in milliseconds) to call the command.",
-      "type": "integer",
-      "default": 2000,
-      "required": true
-    },
-    {
-      "title": "Zookeeper Service Host",
+      "title": "Service Host",
       "name": "service_host",
       "description": "The host used to make TCP connection to the Zookeeper stats API endpoint",
       "type": "string",
@@ -56,7 +48,7 @@
       "required": true
     },
     {
-      "title": "Zookeeper Service Port",
+      "title": "Service Port",
       "name": "service_port",
       "description": "The port used to make TCP connection to the Zookeeper stats API endpoint",
       "type": "integer",
@@ -70,6 +62,14 @@
       "type": "integer",
       "default": 1,
       "required": true
-    }
+    },
+    {
+      "title": "Poll Interval (ms)",
+      "name": "pollInterval",
+      "description": "The Poll Interval (in milliseconds) to call the command.",
+      "type": "integer",
+      "default": 2000,
+      "required": false
+    },
   ]
 }
