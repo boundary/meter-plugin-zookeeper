@@ -53,7 +53,7 @@ local function parse(data)
   return m
 end
 
-local accumulated = Accumulator:new() 
+local acc = Accumulator:new() 
 
 function plugin:onParseValues(data)
   local parsed = parse(data)
@@ -80,11 +80,11 @@ function plugin:onParseValues(data)
 
   local result = {}
   each(
-    function (boundary_name, acc) 
+    function (boundary_name, accumulate) 
       local metric_name = boundary_name:lower()
       if parsed[metric_name] then
         local value = (metric_name == "zk_server_state" and (parsed[metric_name] == "leader" and 1 or 0)) or tonumber(parsed[metric_name])
-        ipack(result, boundary_name, acc and accumulated:accumulate(boundary_name, value) or value)
+        ipack(result, boundary_name, accumulate and acc(boundary_name, value) or value)
       end
     end, metrics)
 
