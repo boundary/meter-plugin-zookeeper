@@ -33,11 +33,11 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 
 |Field Name     |Description                                         |
 |:--------------|:---------------------------------------------------|
-|service_port   |Zookeeper service port -          default: 2185     |
-|service_host   |Zookeeper service host -          default: localhost|
-|service_timeout|Zookeeper service connection timeout -    default: 1|
-|pollInterval   |How often to query the Zookeeper service for metrics|
-|Source        |The Source to display in the legend for the zookeeper data.  It will default to the hostname of the server|
+| Host   |Zookeeper service host|
+| Port   |Zookeeper service port|
+| Timeout|Zookeeper service connection timeout|
+| Poll Interval (ms) |How often to query the Zookeeper service for metrics|
+| Source        |The Source to display in the legend for the zookeeper data.  It will default to the hostname of the server|
 
 ### Metrics Collected
 

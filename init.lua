@@ -22,11 +22,11 @@ local map = framework.functional.map
 local reduce = framework.functional.reduce
 local filter = framework.functional.filter
 local each = framework.functional.each
-local pack = framework.util.pack
+local ipack = framework.util.ipack
 
 local params = framework.params
 
-local ds = NetDataSource:new(params.service_host, params.service_port, true)
+local ds = NetDataSource:new(params.host, params.port, true)
 function ds:onFetch(socket)
   socket:write('mntr\n')
 end
@@ -53,7 +53,7 @@ local function parse(data)
   return m
 end
 
-local accumulated = Accumulator:new() 
+local acc = Accumulator:new() 
 
 function plugin:onParseValues(data)
   local parsed = parse(data)
@@ -80,12 +80,11 @@ function plugin:onParseValues(data)
 
   local result = {}
   each(
-    function (boundary_name, acc) 
+    function (boundary_name, accumulate) 
       local metric_name = boundary_name:lower()
       if parsed[metric_name] then
         local value = (metric_name == "zk_server_state" and (parsed[metric_name] == "leader" and 1 or 0)) or tonumber(parsed[metric_name])
-
-        table.insert(result, pack(boundary_name, acc and accumulated:accumulate(boundary_name, value) or value))
+        ipack(result, boundary_name, accumulate and acc(boundary_name, value) or value)
       end
     end, metrics)
 
