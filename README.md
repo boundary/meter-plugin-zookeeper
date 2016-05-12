@@ -12,6 +12,8 @@ Collects metrics from Zookeeper server.
 
 #### Zookeeper 3.4+
 
+The plugin relies on the command 'mntr' which is available only from zookeeper version 3.4 and above.
+
 #### Boundary Meter versions v4.2 or later
 
 - To install new meter go to Settings->Installation or [see instructions](https://help.boundary.com/hc/en-us/sections/200634331-Installation).
