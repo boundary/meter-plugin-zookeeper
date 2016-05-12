@@ -17,14 +17,6 @@ Collects metrics from Zookeeper server.
 - To install new meter go to Settings->Installation or [see instructions](https://help.boundary.com/hc/en-us/sections/200634331-Installation).
 - To upgrade the meter to the latest version - [see instructions](https://help.boundary.com/hc/en-us/articles/201573102-Upgrading-the-Boundary-Meter).
 
-#### For Boundary Meter earlier than v4.2
-
-|  Runtime | node.js | Python | Java |
-|:---------|:-------:|:------:|:----:|
-| Required |         |    v   |      |
-
-- [How to install Python?](https://help.boundary.com/hc/articles/202270132)
-
 ### Plugin Setup
 
 In order the plugin to collect statistics from Zookeeper server, it needs access to the service stats API endpoint.
@@ -52,6 +44,15 @@ In order the plugin to collect statistics from Zookeeper server, it needs access
 |ZK_EPHEMERALS_COUNT          |The total amount of ephemerals in Zookeeper                              |
 |ZK_ZNODE_COUNT               |Total number of data registers in Zookeeper                              |
 |ZK_MAX_FILE_DESCRIPTOR_COUNT |Total maximum number of filedescriptors allowed to open                  |
+|ZK_AVG_LATENCY               |The average latency measured by Zookeeper                                |
+|ZK_MAX_LATENCY               |The maximum latency measured by Zookeeper                                |
+|ZK_OUTSTANDING_REQUESTS      |Total number of requests waiting to be processed by Zookeeper            |
+|ZK_SERVER_STATE              |Shows the server is currently a leader or a follower in the cluster      |
+|ZK_APPROXIMATE_DATA_SIZE     |The approximate size of the data being handled by Zookeeper              |
+|ZK_FOLLOWERS                 |The number of servers using this Zookeeper node as a leader              |
+|ZK_SYNCED_FOLLOWERS          |Zookeeper server nodes which are synchronized with this leader           |
+|ZK_PENDING_SYNCS             |Synchronization requests which are yet to be processed                   |
+
 
 ### Dashboards
 
