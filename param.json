@@ -1,6 +1,6 @@
 {
   "pollInterval" : 1000,
-  "service_host" : "localhost",
-  "service_port" : 2181,
+  "host" : "localhost",
+  "port" : 2181,
   "service_timeout" : 1
 }
