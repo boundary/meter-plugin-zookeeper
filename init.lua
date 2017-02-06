@@ -57,38 +57,32 @@ local acc = Accumulator:new()
 
 function plugin:onParseValues(data)
   local parsed = parse(data)
-
-  local metrics = {}
-	
-  metrics['ZK_WATCH_COUNT'] = false
-  metrics['ZK_NUM_ALIVE_CONNECTIONS'] = false
-  metrics['ZK_OPEN_FILE_DESCRIPTOR_COUNT'] = false
-  metrics['ZK_OUTSTANDING_REQUESTS'] = false
-  metrics['ZK_PACKETS_SENT'] =  true
-  metrics['ZK_PACKETS_RECEIVED'] = true
-  metrics['ZK_APPROXIMATE_DATA_SIZE'] = true
-  metrics['ZK_MIN_LATENCY'] = false
-  metrics['ZK_MAX_LATENCY'] = false
-  metrics['ZK_AVG_LATENCY'] = false
-  metrics['ZK_EPHEMERALS_COUNT'] = false
-  metrics['ZK_ZNODE_COUNT'] = false
-  metrics['ZK_MAX_FILE_DESCRIPTOR_COUNT'] = false
-  metrics['ZK_SERVER_STATE'] = false
-  metrics['ZK_FOLLOWERS'] = false
-  metrics['ZK_SYNCED_FOLLOWERS'] = false
-  metrics['ZK_PENDING_SYNCS'] = false
-
   local result = {}
-  each(
-    function (boundary_name, accumulate) 
-      local metric_name = boundary_name:lower()
-      if parsed[metric_name] then
-        local value = (metric_name == "zk_server_state" and (parsed[metric_name] == "leader" and 1 or 0)) or tonumber(parsed[metric_name])
-        ipack(result, boundary_name, accumulate and acc(boundary_name, value) or value)
-      end
-    end, metrics)
+  local metric = function (...) ipack(result, ...) end
+  local src = notEmpty(params.source,nil)
+  metric('ZK_WATCH_COUNT',parsed.zk_watch_count,nil,src)
+  metric('ZK_NUM_ALIVE_CONNECTIONS',parsed.zk_num_alive_connections,nil,src)
+  metric('ZK_OPEN_FILE_DESCRIPTOR_COUNT',parsed.zk_open_file_descriptor_count,nil,src)
+  metric('ZK_OUTSTANDING_REQUESTS',parsed.zk_outstanding_requests,nil,src)
+  metric('ZK_PACKETS_SENT',parsed.zk_packets_sent,nil,src)
+  metric('ZK_PACKETS_RECEIVED',parsed.zk_packets_received,nil,src)
+  metric('ZK_APPROXIMATE_DATA_SIZE',parsed.zk_approximate_data_size,nil,src)
+  metric('ZK_MIN_LATENCY',parsed.zk_min_latency,nil,src)
+  metric('ZK_MAX_LATENCY',parsed.zk_max_latency,nil,src)
+  metric('ZK_AVG_LATENCY',parsed.zk_avg_latency,nil,src)
+  metric('ZK_EPHEMERALS_COUNT',parsed.zk_ephemerals_count,nil,src)
+  metric('ZK_ZNODE_COUNT',parsed.zk_znode_count,nil,src)
+  metric('ZK_MAX_FILE_DESCRIPTOR_COUNT',parsed.zk_max_file_descriptor_count,nil,src)
+  if parsed.zk_server_state == "leader" then
+    metric('ZK_SERVER_STATE',1,nil,src)
+  else
+    metric('ZK_SERVER_STATE',0,nil,src)
+  end
+  metric('ZK_FOLLOWERS',(parsed.zk_followers or 0),nil,src)
+  metric('ZK_SYNCED_FOLLOWERS',(parsed.zk_synced_followers or 0),nil,src)
+  metric('ZK_PENDING_SYNCS',(parsed.zk_pending_syncs or 0),nil,src)
 
-  return result
+ return result
 end
 
 plugin:run()
