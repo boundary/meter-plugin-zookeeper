@@ -1,6 +1,6 @@
 {
   "name"            : "TrueSight Pulse Zookeeper Plugin",
-  "version" : "0.9.2",
+  "version" : "0.9.3",
   "meterVersionRequired" : "4.2.0-611",
   "unsupportedPlatforms" : [ ],
   "tags"            : "zookeeper",
